@@ -1,0 +1,7 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /my-spring-boot
+spring:
+  application:
+    name: my-spring-boot-name
