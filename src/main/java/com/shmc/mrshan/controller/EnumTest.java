@@ -1,7 +1,5 @@
 package com.shmc.mrshan.controller;
 
-import java.util.ArrayList;
-
 public enum EnumTest implements TestInterface{
     TEST1("200","OK") {
         @Override
