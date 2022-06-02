@@ -15,7 +15,6 @@ public class DemoController {
         if("1".equals(id)){
             return "hello，mrshan"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         }
-
         return "没有数据";
     }
 }
