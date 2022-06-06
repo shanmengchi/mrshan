@@ -21,4 +21,8 @@ public class DemoController {
     public String test() {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
+    @RequestMapping("/test2")
+    public String test2() {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
 }
