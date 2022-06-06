@@ -17,8 +17,4 @@ public class DemoController {
         }
         return "没有数据";
     }
-    @RequestMapping("/test")
-    public String test() {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-    }
 }
