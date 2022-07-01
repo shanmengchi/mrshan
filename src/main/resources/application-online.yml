@@ -1,0 +1,25 @@
+server:
+  port: 6666
+  servlet:
+    context-path: /my-spring-boot
+spring:
+  application:
+    name: my-spring-boot-name
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://116.205.169.237:13306/mrshan?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&nullCatalogMeansCurrent=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    database: 1
+    host: 116.205.169.237
+    password:
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1s
+        max-idle: 8
+        min-idle: 0
+    timeout: 30000ms
