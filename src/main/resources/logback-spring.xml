@@ -9,7 +9,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     <conversionRule conversionWord="customcolor" converterClass="com.github.jetty.config.LogbackColorful"/>
     <!-- 定义日志的要保存的根目录 -->
 
-    <property name="APP_NAME" value="rest_api"/>
+    <property name="APP_NAME" value="mrshan"/>
     <property name="HOME_LOG" value="/logs/app.log"/><!--日志首文件-->
     <springProfile name="dev"><!--dev和test环境属性-->
         <property name="HOME_LOG" value="D:/logs/${APP_NAME}/app.log"/><!--日志首文件-->

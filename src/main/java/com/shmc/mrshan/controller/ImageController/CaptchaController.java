@@ -1,6 +1,8 @@
 package com.shmc.mrshan.controller.ImageController;
 
 import com.baomidou.kisso.captcha.ICaptcha;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/yanzhengma")
 public class CaptchaController {
+    protected final Logger logger = LoggerFactory.getLogger(CaptchaController.class);
+
     @Resource
     protected HttpServletRequest request;
     @Resource
@@ -29,11 +33,13 @@ public class CaptchaController {
     // 生成验证，例如：http://localhost:8088/v1/captcha/image?ticket=123456
     @GetMapping("/image")
     public void image(String ticket) {
+        logger.error("image");
         try {
             // 验证码信息存放在缓存中，key = ticket 、 value = 验证码文本内容
             captcha.generate(request, response.getOutputStream(), ticket);
         } catch (IOException e) {
             e.printStackTrace();
+            logger.error("logger.error");
         }
     }
 
