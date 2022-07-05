@@ -63,8 +63,10 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     <springProfile name="online">
         <!--logger用来设置某一个包或者具体的某一个类的日志打印级别-->
         <!--name用来指定受此loger约束的某一个包或者具体的某一个类-->
-        <logger name="org.springframework.web" level="ERROR"/>
-        <logger name="com.github.jetty" level="ERROR"/>
+        <logger name="org.springframework.web" level="DEBUG"/>
+        <logger name="com.github.jetty" level="DEBUG"/>
+        <!--<logger name="org.springframework.web" level="ERROR"/>-->
+        <!--<logger name="com.github.jetty" level="ERROR"/>-->
         <root level="INFO">
             <appender-ref ref="CONSLOG"/>
             <appender-ref ref="appLogAppender"/>
