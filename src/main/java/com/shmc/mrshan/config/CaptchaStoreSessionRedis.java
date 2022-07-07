@@ -20,11 +20,11 @@ public class CaptchaStoreSessionRedis implements ICaptchaStore {
 //    }
     @Override
     public String get(String s) {
-        return BeanUtils.getBean(RedisUtils.class).get(s).toString();
+        return  BeanUtils.getBean(RedisUtils.class).hasKey(s)? BeanUtils.getBean(RedisUtils.class).get(s).toString() : null;
     }
 
     @Override
     public boolean put(String s, String s1) {
-        return BeanUtils.getBean(RedisUtils.class).set(s,s1,10);
+        return BeanUtils.getBean(RedisUtils.class).set(s,s1,60);
     }
 }
