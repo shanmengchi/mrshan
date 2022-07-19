@@ -33,8 +33,8 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
         <!--</dependency>-->
         <!-- database -->
         <dependency>
@@ -96,12 +96,11 @@
 
         <!--集成Activiti-->
         <!--<dependency>-->
-            <!--<groupId>org.activiti</groupId>-->
-            <!--<artifactId>activiti-spring-boot-starter-basic</artifactId>-->
-            <!--&lt;!&ndash;<version>6.0.0</version>&ndash;&gt;-->
-            <!--<version>5.22.0</version>-->
+        <!--<groupId>org.activiti</groupId>-->
+        <!--<artifactId>activiti-spring-boot-starter-basic</artifactId>-->
+        <!--&lt;!&ndash;<version>6.0.0</version>&ndash;&gt;-->
+        <!--<version>5.22.0</version>-->
         <!--</dependency>-->
-
 
 
         <dependency>
@@ -114,7 +113,6 @@
             <version>4.12</version>
             <scope>compile</scope>
         </dependency>
-
 
 
         <!--//图片验证码依赖-->
@@ -141,6 +139,33 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
             <version>2.6.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+        <!--JSONobject的包-->
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
+        <!-- word -->
+        <dependency>
+            <groupId>com.deepoove</groupId>
+            <artifactId>poi-tl</artifactId>
+            <version>1.7.3</version>
+        </dependency>
+        <!-- excel poi -->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-spring-boot-starter</artifactId>
+            <version>4.4.0</version>
         </dependency>
     </dependencies>
 

@@ -45,5 +45,28 @@ public class CollectionStreamTest {
 
         Map<String, Map<Integer, Map<Double, List<User>>>> collect3 = list.stream().collect(Collectors.groupingBy(x -> x.getName(), Collectors.groupingBy(x -> x.getAge(), Collectors.groupingBy(x -> x.getMoney()))));
         System.out.println(collect3);
+
+        System.out.println();
+        System.out.println("--------------------------------------");
+        Map<Double, String> collect4 = list.stream().collect(Collectors.toMap(User::getMoney, User::getName));
+        System.out.println(collect4);
+//                List<DangerCheckProjectDTO> sortedList = dtoList.stream().sorted(Comparator.comparing(DangerCheckProjectDTO::getClassifyCode)
+//                .thenComparing(DangerCheckProjectDTO::getFirstClassifyCode)
+//                .thenComparing(DangerCheckProjectDTO::getSecondClassifyCode, Comparator.nullsLast(Long::compareTo))).collect(Collectors.toList());
+
+//    List<RiskAssessmentUnitDetailDTO> rows = riskAssessmentUnitList.stream()
+//                .map(item -> {
+//                    RiskAssessmentUnitDetailDTO target = new RiskAssessmentUnitDetailDTO();
+//                    RiskAssessmentUnitDetailDTO tmp = assessmentUnitModelMap.get(item.getChildUnitId());
+//                    BeanUtils.copyProperties(tmp, target);
+//                    BeanUtils.copyProperties(item, target);
+//                    return target;
+//                }).collect(Collectors.toList());
+
+
+//        List<Long> dataPath = Arrays.stream(assessmentUnitDTO.getDataPath().split("/"))
+//                .map(Long::parseLong)
+//                .collect(Collectors.toList())
+//                .subList(1, 4);
     }
 }
