@@ -116,14 +116,19 @@ public class Word {
             JSONArray parametersArr = method.getJSONArray("parameters");
             for (int i = 0; i < parametersArr.size(); i++) {
                 JSONObject param = parametersArr.getJSONObject(i);
+                //过滤几个通用参数
+                if(key.equals("/api/sys/base/sysJob/insert") && "pageSize".equals(param.getString("name"))){
+                    System.out.println("");
+                }
+                if(filter(param,rows,param)) continue;
                 if(param.getString("in")==null){
                     System.out.println(param);
-                    rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),param.getBoolean("required")?"是":"否",""));
+                    rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),isParam(param) ? "是" : param.getBoolean("required")?"是":"否",""));
                     continue;
                 }
                 switch (param.getString("in")){
                     case "header":
-                        rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),param.getBoolean("required")?"是":"否",""));
+                        rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),isParam(param) ? "是" : param.getBoolean("required")?"是":"否",""));
                         break;
                     case "body":
 //                        standardBudgetItem items
@@ -137,7 +142,7 @@ public class Word {
                             }
                             if(enityObj.getJSONObject(param.getJSONObject("schema").getString("originalRef"))==null){
                                 System.out.println(param);
-                                rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),param.getBoolean("required")?"是":"否",""));
+                                rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),isParam(param) ? "是" : param.getBoolean("required")?"是":"否",""));
                                 break;
                             }
                             params = enityObj.getJSONObject(param.getJSONObject("schema").getString("originalRef")).getJSONObject("properties");
@@ -151,7 +156,7 @@ public class Word {
                         });
                         break;
                     case "query":
-                        rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),param.getBoolean("required")?"是":"否",""));
+                        rows.add(RowRenderData.build(param.getString("name"), param.getString("description"),param.getString("type"),isParam(param) ? "是" : param.getBoolean("required")?"是":"否",""));
                         break;
                 }
             }
@@ -233,6 +238,34 @@ public class Word {
             data.put("returntable",new MiniTableRenderData(headerReturnTable,rowsReturnTable));
             list.add(data);
         });
+    }
+
+    static Map<String,String> map = new HashMap(){{
+        put("pageSize","页面大小");
+        put("pageNum","当前页码");
+        put("createUserId","创建人id");
+        put("startDay","查询开始日期");
+        put("endDay","查询结束日期");
+        put("startTime","查询开始时间");
+        put("endTime","查询结束时间");
+        put("remark","备注");
+        put("updateTime","更新时间");
+        put("createTime","创建时间");
+        put("id","主键id");
+        put("officeId","单位id");
+    }};
+    private static boolean filter(JSONObject jsonObject, List<RowRenderData> rows, JSONObject param) {
+
+        String name = param.getString("name");
+        if(map.containsKey(name)){
+            rows.add(RowRenderData.build(param.getString("name"), map.get(name),param.getString("type"),isParam(param) ? "是" : param.getBoolean("required")?"是":"否",""));
+            return  true;
+        }
+        return  false;
+    }
+
+    public static boolean isParam(JSONObject param){
+        return "token".equals(param.getString("name")) || "from".equals(param.getString("name"));
     }
 
 
