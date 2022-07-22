@@ -7,6 +7,8 @@ import com.deepoove.poi.data.MiniTableRenderData;
 import com.deepoove.poi.data.RowRenderData;
 import com.deepoove.poi.data.TextRenderData;
 import com.shmc.mrshan.utils.SendSignHttpsClient;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,8 +71,10 @@ public class WordController {
         Map finalmap = new HashMap();
         finalmap.put("maxitem",listMax);
 
+        Resource resource = new ClassPathResource("");
+        System.out.println(resource.getFile().getAbsolutePath());
 
-        XWPFTemplate template = XWPFTemplate.compile("D:/workspace/MyTestRepository/trunk/src/main/resources/word/template.docx")
+        XWPFTemplate template = XWPFTemplate.compile(resource.getFile().getAbsolutePath()+"/word/template.docx")
                 .render(finalmap);
 //        FileOutputStream out;
 //        out = new FileOutputStream("D:/workspace/MyTestRepository/trunk/src/main/resources/word/template3.docx");
